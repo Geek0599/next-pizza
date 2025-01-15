@@ -73,7 +73,7 @@ export const ProfileOrders: React.FC<Props> = ({ className }) => {
 				}
 				{
 					// result
-					(orders.length && orders || [...Array(2)]).map((order: CartOrder, index)=>(
+					(orders.length > 0 && orders || loading ? [...Array(2)] : []).map((order: CartOrder, index)=>(
 						<WhiteBlock
 							key={loading ?  index : order.id}
 							endAdornment={loading ? <Skeleton className='inline-block w-32 h-8 rounded-sm'/> : null} 
