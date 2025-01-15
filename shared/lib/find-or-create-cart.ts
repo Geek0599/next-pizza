@@ -13,7 +13,7 @@ export const findOrCreateCart = async (token: string) => {
 		}
 	})
 
-	if (userCart && !userCart.userId && session && session.id) {
+	if (userCart && session && session.id) {
 		userCart = await prisma.cart.update({
 			where: {
 				id: userCart.id

@@ -29,6 +29,9 @@ export const ProfileOrders: React.FC<Props> = ({ className }) => {
 
 				const orders = await Api.orders.getOrders()
 
+				console.log(orders);
+				
+
 				if(orders && orders.length){					
 					setOrders(orders)
 				}
@@ -73,7 +76,13 @@ export const ProfileOrders: React.FC<Props> = ({ className }) => {
 				}
 				{
 					// result
-					(orders.length > 0 && orders || loading ? [...Array(2)] : []).map((order: CartOrder, index)=>(
+					(
+						// if loading - render 2 skeletons
+						loading ? [...Array(2)] : 
+						// if orders is available
+						orders && orders.length > 0 ? orders : []
+
+					).map((order: CartOrder, index)=>(
 						<WhiteBlock
 							key={loading ?  index : order.id}
 							endAdornment={loading ? <Skeleton className='inline-block w-32 h-8 rounded-sm'/> : null} 
