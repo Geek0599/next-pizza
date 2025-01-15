@@ -1,0 +1,11 @@
+.hdpi.pac-logo:after{
+	display: none;
+}
+.pac-item{
+	padding: 5px 10px;
+	cursor: pointer;
+	font-size: 13px;
+}
+.pac-container{
+	border-radius: 12px;
+}
