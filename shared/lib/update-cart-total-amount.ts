@@ -9,8 +9,8 @@ export const updateCartTotalAmount = async (token: string) => {
 		where: {
 			OR: [
 				...(session?.id ? [{ userId: Number(session.id) }] : []),
-				{ token: token },
-			]
+				...(!session?.id && token ? [{ token }] : []),
+			],
 		},
 		include: {
 			items: {

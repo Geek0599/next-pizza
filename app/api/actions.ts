@@ -25,7 +25,7 @@ export async function createOrder(data: CheckoutFormValuesType) {
 			throw new Error('Cart token is not found');
 		}
 
-		// Find cart by token
+		// Find cart by userId or token 
 		const userCart = await prisma.cart.findFirst({
 			include: {
 				user: true,
@@ -43,7 +43,7 @@ export async function createOrder(data: CheckoutFormValuesType) {
 			where: {
 				OR: [
 					...(session?.id ? [{ userId: Number(session.id) }] : []),
-					{ token: cartToken },
+					...(!session?.id && cartToken ? [{ token: cartToken }] : []),
 				]
 			}
 		})

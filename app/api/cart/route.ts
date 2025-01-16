@@ -1,6 +1,5 @@
 import { prisma } from "@/prisma/prisma-client";
 import { NextRequest, NextResponse } from "next/server";
-import crypto from 'crypto';
 import { findOrCreateCart } from "@/shared/lib/find-or-create-cart";
 import { CreateCartItemValues } from "@/shared/services/dto/cart.dto";
 import { updateCartTotalAmount } from "@/shared/lib/update-cart-total-amount";
@@ -15,29 +14,28 @@ export async function GET(req: NextRequest) {
 			return NextResponse.json({ totalAmount: 0, items: [] })
 		}
 
+		let cart = await findOrCreateCart(token)
+
 		const userCart = await prisma.cart.findFirst({
 			where: {
-				OR: [
-					...(session?.id ? [{ userId: Number(session.id) }] : []),
-					{ token: token },
-				]
+				id: cart.id
 			},
 			include: {
 				items: {
 					orderBy: {
-						createdAt: 'desc'
+						createdAt: 'desc',
 					},
 					include: {
 						productItem: {
 							include: {
-								product: true
-							}
+								product: true,
+							},
 						},
-						ingredients: true
-					}
+						ingredients: true,
+					},
 				},
-			}
-		})
+			},
+		});
 
 
 		return NextResponse.json(userCart)
@@ -51,10 +49,6 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
 	try {
 		let token = req.cookies.get('cartToken')?.value;
-
-		if (!token) {
-			token = crypto.randomUUID()
-		}
 
 		const userCart = await findOrCreateCart(token)
 
@@ -92,11 +86,11 @@ export async function POST(req: NextRequest) {
 			})
 		}
 
-		const updatedUserCart = await updateCartTotalAmount(token);
+		const updatedUserCart = await updateCartTotalAmount(userCart.token);
 
 		const resp = NextResponse.json(updatedUserCart);
 
-		resp.cookies.set('cartToken', token);
+		resp.cookies.set('cartToken', userCart.token);
 
 		return resp;
 

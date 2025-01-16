@@ -12,8 +12,6 @@ export async function GET() {
 			return NextResponse.json({ message: 'Unauthorized user' }, { status: 500 })
 		}
 
-		console.log(session.id);
-
 
 		const orders = await prisma.order.findMany({
 			where: {
