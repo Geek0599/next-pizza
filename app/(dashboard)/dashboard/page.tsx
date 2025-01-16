@@ -1,5 +1,9 @@
+import { Container, Title } from "@/shared/components";
+
 export default function Dashboard(){
 	return (
-		<h1>Dashboard</h1>
+		<Container>
+			<Title text="Dashboard" size={'2xl'} className="text-center"/>
+		</Container>
 	)
 }

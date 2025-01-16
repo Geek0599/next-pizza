@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 export const metadata : Metadata = {
 	title: 'Оформлення замовлення',
-	description: 'Оформлення замовлення в сервісі доставки піцци',
+	description: 'Оформлення замовлення в сервісі Next Pizza UA -  доставці піцци',
  }
  
  export default function CheckoutLayout({

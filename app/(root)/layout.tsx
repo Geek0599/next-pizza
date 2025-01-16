@@ -3,9 +3,10 @@ import { Header } from "@/shared/components/shared";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Next Pizza | Main Page",
-  description: "Top Nex Pizza in Ukraine",
+	title: "Next Pizza UA | Головна Сторінка",
+	description: "Скуштуйте найкращу піцу з доставкою в Україні! Top Next Pizza пропонує свіжі інгредієнти, унікальні рецепти та швидку доставку прямо до ваших дверей.",
 };
+ 
 
 export default function HomeLayout({
   children,

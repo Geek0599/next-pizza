@@ -2,10 +2,11 @@ import { Container, Header } from "@/shared/components/shared";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
-export const metadata : Metadata = {
-	title: 'Оформлення замовлення',
-	description: 'Оформлення замовлення в сервісі доставки піцци',
- }
+export const metadata: Metadata = {
+	title: "Мій профіль",
+	description: "Керуйте своїми замовленнями та налаштуваннями в сервісі Next Pizza UA — зручна доставка піци для вас.",
+ };
+ 
  
  export default function CheckoutLayout({
 	children,
