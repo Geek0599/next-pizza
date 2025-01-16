@@ -75,7 +75,7 @@ export const Stories: React.FC<Props> = ({ className }) => {
 					{
 						open && (
 							<div className="fixed left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-30">
-								<div ref={ref} className="relative max-w-[450px] overflow-y-auto max-h-screen p-3 pt-10">
+								<div ref={ref} className="relative max-w-[450px] overflow-y-auto max-h-dvh p-3 pt-10">
 									<button onClick={onClose} className="absolute right-0 top-0 z-30">
 										<X className='absolute top-0 right-0 w-8 h-8 text-white/50'/>
 									</button>
