@@ -83,8 +83,8 @@ export default function CheckoutPage(){
 	}
 
 	return (
-		<div className="mt-10">
-      	<Title text="Оформлення замовлення" className="font-extrabold mb-8 text-[36px]" />
+		<div className="sm:mt-10 mt-6">
+      	<Title text="Оформлення замовлення" className="font-extrabold sm:mb-8 mb-7 md:text-[36px] sm:text-[30px] text-[26px]" />
 
 			<div className="flex lg:flex-row flex-col gap-8 pb-20">
 				{/* Left side */}

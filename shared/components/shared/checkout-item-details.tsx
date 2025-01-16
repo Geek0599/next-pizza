@@ -13,12 +13,12 @@ interface Props {
 	classNameValue?: string
 }
 
-export const CheckoutItemDetails: React.FC<Props> = ({ title, value, Icon, iconSize = 18, iconClassName = 'mr-2 text-gray-400', className, classNameValue }) => {
+export const CheckoutItemDetails: React.FC<Props> = ({ title, value, Icon, iconSize = 18, iconClassName = 'text-gray-400', className, classNameValue }) => {
 	return (
-		<div className={cn('flex my-4', className)}>
-			<div className="flex flex-1 text-lg text-neutral-500">
+		<div className={cn('flex sm:items-stretch items-end my-4', className)}>
+			<div className="flex items-end flex-1 text-lg text-neutral-500">
 				{!Icon ? title : (
-					<div className='flex items-center'>
+					<div className='flex gap-y-1 gap-x-2 flex-wrap items-center sm:max-w-none max-w-[55%]'>
 						<Icon size={iconSize} className={iconClassName} />
 						{title}
 					</div>

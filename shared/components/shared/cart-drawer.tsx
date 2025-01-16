@@ -45,7 +45,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>{children}</SheetTrigger>
-			<SheetContent className='flex flex-col justify-between pb-0 bg-[#f4f1ee]'>
+			<SheetContent className='flex flex-col justify-between bg-[#f4f1ee] md:p-6 md:pb-0 sm:p-5 sm:pb-0 p-4 pb-0'>
 				<div className={cn('flex flex-col h-full', !totalAmount && 'justify-center')}>
 
 					{!totalAmount && (
@@ -70,13 +70,13 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 					{ totalAmount > 0 && (
 						<>
 							<SheetHeader>
-								<SheetTitle>У кошику <span className='font-bold'>{count} {renderPluralFormCart(count)}</span></SheetTitle>
+								<SheetTitle className='text-left'>У кошику <span className='font-bold'>{count} {renderPluralFormCart(count)}</span></SheetTitle>
 								<SheetDescription>
 
 								</SheetDescription>
 							</SheetHeader>
 							{/* items */}
-							<div className="-mx-6 mt-5 overflow-auto scrollbar flex-1">
+							<div className="md:-mx-6 sm:-mx-5 -mx-4 mt-5 overflow-auto scrollbar flex-1">
 								{items.map((productItem)=>(
 									<div key={productItem.id} className='mb-2'>
 										<CartDrawerItem 
@@ -94,7 +94,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 								))}
 							</div>
 
-							<SheetFooter className='-mx-6 bg-white p-8'>
+							<SheetFooter className='md:-mx-6 sm:-mx-5 -mx-4 bg-white md:p-4 sm:p-6 p-4'>
 								<div className="w-full">
 
 									<div className="flex mb-4">

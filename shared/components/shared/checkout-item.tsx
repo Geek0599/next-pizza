@@ -10,8 +10,6 @@ interface Props extends CartItemProps {
   onClickCountButton?: (type: 'plus' | 'minus') => void;
   onClickRemove?: () => void;
   className?: string;
-  Skeleton?: React.ReactNode;
-  loading?: boolean;
   id: number;
 }
 
@@ -25,14 +23,12 @@ export const CheckoutItem: React.FC<Props> = ({
   disabled,
   onClickCountButton,
   onClickRemove,
-  Skeleton,
-  loading
 }) => {	
 
   return (
     <div
       className={cn(
-        'md:flex gap-3 items-center justify-between grid grid-cols-[auto_1fr]',
+        'md:flex gap-3 items-center justify-between grid grid-cols-[53%_1fr]',
         {
           'opacity-50 pointer-events-none': disabled,
         },
@@ -45,7 +41,7 @@ export const CheckoutItem: React.FC<Props> = ({
 
       <CartItemDetails.Price value={price} className='flex-1 text-center' />
 
-      <div className="flex flex-row items-center gap-5 justify-evenly">
+      <div className="flex flex-row items-center sm:gap-5 gap-3 justify-evenly">
         <CartItemDetails.CountButton onClickCountButton={onClickCountButton} value={quantity} />
         <button type="button" onClick={onClickRemove}>
           <X className="text-gray-400 cursor-pointer hover:text-gray-600" size={20} />

@@ -27,29 +27,27 @@ export const CartDrawerItem: React.FC<Props> = ({
 	return (
 		<div className={
 				cn(
-					'flex bg-white sm:p-5 p-3 sm:gap-6 gap-3', 
+					'sm:p-4 p-3 sm:gap-x-6 gap-x-4 gap-y-1 bg-white grid sm:grid-cols-[60px_1fr] sm:grid-rows-[40px_20px_1fr] grid-cols-[60px_1fr]', 
 					{'opacity-50 pointer-events-none': disabled}, 
 					className
 				)
 			}>
 			<CartItem.Image src={imageUrl} />
 
-			<div className="flex-1">
-				<CartItem.Info name={name} details={details} />
+			<CartItem.Info name={name} details={details} />
 
-				<hr className='my-3'/>
+			<hr className='my-3 sm:col-span-2 sm:col-start-2 col-span-2'/>
 
-				<div className="flex items-center gap-2">
-					<CountButton onClickCountButton={onClickCountButton} value={quantity}/>
+			<div className="flex items-center gap-2 sm:col-start-2 sm:col-span-2 col-span-2">
+				<CountButton onClickCountButton={onClickCountButton} value={quantity}/>
 
-					<div className="flex-1 flex gap-3 items-center justify-evenly">
-						<CartItem.Price className='text-center' value={price}/>
-						<Trash2Icon
-							onClick={onClickRemoveItem}
-							size={16}
-							className='text-gray-400 cursor-pointer transition-colors hover:text-gray-600'
-						/>
-					</div>
+				<div className="flex-1 flex gap-3 items-center justify-evenly">
+					<CartItem.Price className='text-center' value={price}/>
+					<Trash2Icon
+						onClick={onClickRemoveItem}
+						size={16}
+						className='text-gray-400 cursor-pointer transition-colors hover:text-gray-600'
+					/>
 				</div>
 			</div>
 		</div>
