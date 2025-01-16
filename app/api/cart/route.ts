@@ -38,7 +38,14 @@ export async function GET(req: NextRequest) {
 		});
 
 
-		return NextResponse.json(userCart)
+		const resp = NextResponse.json(userCart);
+
+		if (!token) {
+			resp.cookies.set('cartToken', cart.token);
+		}
+
+
+		return resp;
 	} catch (error) {
 		console.log('[CART_GET] Server error', error);
 		return NextResponse.json({ message: 'Не вдалося знайти корзину' }, { status: 500 })

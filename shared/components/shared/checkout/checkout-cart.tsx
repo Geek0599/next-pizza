@@ -1,5 +1,4 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { WhiteBlock } from '../white-block';
 import { CheckoutItem } from '../checkout-item';
 import { getCartItemDetails } from '@/shared/lib';
@@ -7,9 +6,8 @@ import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
 import { CartStateItem } from '@/shared/lib/get-cart-details';
 import { CheckoutItemSkeleton } from '../checkout-item-skeleton';
 import { Title } from '../title';
-import Link from 'next/link';
 import { Button } from '../../ui';
-import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 interface Props {
 	items: CartStateItem[];
@@ -46,7 +44,7 @@ export const CheckoutCart: React.FC<Props> = ({ className, items, onClickCountBu
 						const isNotLast = index !== arr.length - 1
 						return (
 							item.disabled ?
-							<div key={index}>
+							<div key={item.id}>
 								<CheckoutItemSkeleton className='lg:h-[92px]'/> 
 								{isNotLast && ( <hr />)}
 							</div>
