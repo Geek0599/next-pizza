@@ -107,7 +107,7 @@ export async function createOrder(data: CheckoutFormValuesType) {
 		if (paymentUrl) {
 			// Create email for payment
 			await sendEmail(
-				data.email,
+				'yuriidmitrik@gmail.com',
 				`Next Pizza | Сплата замовлення № ${orderId}`,
 				PayOrderTemplate({ orderId, totalAmount, paymentUrl, items: userCart.items, deliveryPrice })
 			)
