@@ -4,7 +4,7 @@ import { Api } from '@/shared/services/api-client';
 import { IStory } from '@/shared/services/stories';
 import React, { useEffect, useRef, useState } from 'react';
 import { Container } from './container';
-import { X } from 'lucide-react';
+import { Loader, X } from 'lucide-react';
 import ReactStories from 'react-insta-stories'
 import { useClickAway } from 'react-use';
 
@@ -48,7 +48,7 @@ export const Stories: React.FC<Props> = ({ className }) => {
 
 	return (
 		<>
-			<Container className={cn('lg:gap-4 my-5 pb-2 max-[768px]:px-0 overflow-hidden', className)}>
+			<Container className={cn('lg:gap-4 sm:my-5 my-4 pb-2 max-[768px]:px-0 overflow-hidden', className)}>
 				<div className="flex items-center sm:-mx-2 -mx-1 overflow-x-auto -mb-3 pb-3 max-[768px]:px-3">
 					{stories.length === 0 && (
 						[...Array(6)].map((_,index)=> (
@@ -80,12 +80,24 @@ export const Stories: React.FC<Props> = ({ className }) => {
 										<X className='absolute top-0 right-0 w-8 h-8 text-white/50'/>
 									</button>
 
-									<ReactStories 
+									<ReactStories
+										loader={
+											(
+												<div className='grid items-center justify-center gap-3'>
+													Завантаження сторіс...
+													<Loader className='mx-auto inline-block'/>
+												</div>
+											)
+										}
 										onAllStoriesEnd={onClose}
 										stories={selectedStories?.items.map((item)=> ({url: item.sourceUrl})) || []}
 										defaultInterval={5000}
-										width='100%'
-										height='750px'
+										storyContainerStyles={
+											{
+												width: '100%',
+												height: 'auto'
+											}
+										}
 									/>
 								</div>
 							</div>

@@ -87,6 +87,7 @@ export const ProfileOrders: React.FC<Props> = ({ className }) => {
 							key={loading ?  index : order.id}
 							endAdornment={loading ? <Skeleton className='inline-block w-32 h-8 rounded-sm'/> : null} 
 							title={loading ? 'Замовлення №' : `Замовлення № ${order.orderId}`}
+							contentClassName='pt-0'
 						>
 							<div className="flex flex-col">
 
@@ -112,13 +113,13 @@ export const ProfileOrders: React.FC<Props> = ({ className }) => {
 									}
 								
 							</div>
-							<div className="sm:pt-4 pt-3 pb-3 px-1 border-t border-gray-100 flex items-center justify-between flex-wrap gap-y-2 gap-x-6">
-								<h4 className='text-[20px] font-bold  flex flex-wrap gap-2 items-center justify-end'>Вартість доставки: {loading ? <Skeleton className='inline-block w-20 h-10 rounded-sm' /> : <span className='text-primary'>{order.deliveryPrice === 0 ? 'безкоштовно' : order.deliveryPrice + ' грн.'}</span>}</h4>
-								<h4 className='text-[20px] font-bold flex flex-wrap gap-2 items-center'>Дата замовлення: {loading ? <Skeleton className='inline-block w-32 h-8 rounded-sm' /> : <span className='text-primary'>{formatDate(order.createdAt)}</span>}</h4>
+							<div className="sm:pt-4 pt-3 pb-3 px-1 border-t border-gray-100 flex items-center justify-between flex-wrap gap-y-4 gap-x-6">
+								<h4 className='text-[20px] font-bold  flex flex-wrap gap-x-2 items-center sm:justify-end'>Вартість доставки: {loading ? <Skeleton className='inline-block w-20 h-10 rounded-sm' /> : <span className='text-primary'>{order.deliveryPrice === 0 ? 'безкоштовно' : order.deliveryPrice + ' грн.'}</span>}</h4>
+								<h4 className='text-[20px] font-bold flex flex-wrap gap-x-2 items-center'>Дата замовлення: {loading ? <Skeleton className='inline-block w-32 h-8 rounded-sm' /> : <span className='text-primary'>{formatDate(order.createdAt)}</span>}</h4>
 							</div>
-							<div className="sm:pt-4 pt-3 sm:pb-1 px-1 border-t border-gray-100 flex flex-wrap gap-3 items-center justify-between">
+							<div className="sm:pt-4 pt-3 sm:pb-1 px-1 border-t border-gray-100 flex flex-wrap gap-4 items-center justify-between">
 								<OrderStatus value={loading ? '' : order.status} loading={loading} />
-								<h4 className='text-[22px] font-bold  flex flex-wrap gap-2 items-center justify-end'>Сума {loading ? <Skeleton className='inline-block w-20 h-10 rounded-sm' /> : <span className='text-primary'>{order.totalAmount} грн.</span>}</h4>
+								<h4 className='sm:text-[22px] text-[20px] font-bold  flex flex-wrap gap-2 items-center justify-end'>Сума {loading ? <Skeleton className='inline-block w-20 h-10 rounded-sm' /> : <span className='text-primary'>{order.totalAmount} грн.</span>}</h4>
 							</div>
 						</WhiteBlock>
 					))

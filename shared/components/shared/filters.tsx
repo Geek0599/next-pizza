@@ -59,7 +59,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 				isSortOnChekedItems={false}
 			/>
 
-			<div className="mt-5 border-y border-y-neutral-100 py-6 pb-7 sm:col-span-2">
+			<div className="sm:mt-5 mt-3 border-y border-y-neutral-100 sm:py-6 sm:pb-7 py-4 sm:col-span-2">
 				<p className='font-bold mb-3'>Ціни від і до:</p>
 				<div className="flex gap-3 mb-5">
 					<Input type='number' min={0} max={1000} placeholder={'0'} value={String(filters.prises.priceFrom || '')}

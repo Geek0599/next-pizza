@@ -26,13 +26,13 @@ export const OrderItem: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        'md:flex gap-3 items-center justify-between grid grid-cols-[55%_1fr]',
+        'md:flex gap-3 sm:items-center items-end justify-between grid grid-cols-[55%_1fr] border-t border-[#ffefdc] first:border-none',
         {
           'opacity-50 pointer-events-none': disabled,
         },
         className,
       )}>
-      <div className="flex md:flex-row flex-col items-center gap-5 flex-[1_1_25%] row-start-1 row-end-3">
+      <div className="flex md:flex-row flex-col items-center sm:gap-5 gap-3  flex-[1_1_25%] row-start-1 row-end-3 sm:text-left text-center">
         <CartItemDetails.Image src={imageUrl} alt={`Піцца ${name}`} />
         <CartItemDetails.Info name={name} details={details} />
       </div>

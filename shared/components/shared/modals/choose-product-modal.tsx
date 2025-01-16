@@ -16,7 +16,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
 
 	return (
 		<Dialog open={Boolean(product)} onOpenChange={()=>router.back()}>
-			<DialogContent className={cn('sm:p-3 p-2 w-full max-w-[1060px] min-h-[500px] border-transparent shadow-none', className)}>
+			<DialogContent className={cn('sm:p-3 p-2 py-3 w-full max-w-[1060px] min-h-[500px] border-transparent shadow-none', className)}>
 				<DialogTitle className='hidden'></DialogTitle>
 				<DialogDescription className='hidden'></DialogDescription>
 				<ProductForm product={product} onSubmit={()=> router.back()}/> 

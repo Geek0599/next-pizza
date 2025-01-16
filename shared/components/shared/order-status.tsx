@@ -25,7 +25,7 @@ export const OrderStatus: React.FC<Props> = ({ value, loading, className }) => {
 			break;
 	}
 	return (
-		<h4 className='text-[22px] font-bold flex flex-wrap gap-2 items-center'>Статус замовлення: { loading ? <Skeleton className='inline-block w-32 h-8 rounded-sm' /> : <span className='text-primary'>{status}</span>}</h4>
+		<h4 className='sm:text-[22px] text-[20px] font-bold flex flex-wrap gap-x-2 items-center'>Статус замовлення: { loading ? <Skeleton className='inline-block w-32 h-8 rounded-sm' /> : <span className='text-primary'>{status}</span>}</h4>
 	)
 	
 };

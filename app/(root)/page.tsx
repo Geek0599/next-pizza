@@ -11,12 +11,12 @@ export default async function Home({ searchParams } : { searchParams : GetSearch
   return (
    <>
 		<Stories />
-		<Container className="mt-10">
+		<Container className="md:mt-10 sm:mt-8 my-4">
 			<Title text="Всі піцци" size="lg" className="font-extrabold"/>
 		</Container>
 		<TopBar categories={categories.filter((category)=>category.products.length > 0)}/>
 		<Container className="pb-14">
-			<div className="flex xl:flex-row flex-col lx:gap-[80px] mt-10 gap-[55px]">
+			<div className="flex xl:flex-row flex-col lx:gap-[80px] md:mt-10 sm:mt-8 mt-6 sm:gap-[55px] gap-[40px]">
 				{/* Filters */}
 				<div className="xl:w-[250px]">
 					<Suspense>
