@@ -5,6 +5,7 @@ import { OrderStatus } from '@prisma/client';
 import { CartItemDTO } from '@/shared/services/dto/cart.dto';
 import { sendEmail } from '@/shared/lib';
 import { OrderSuccessTemplate } from '@/shared/components/shared/email-templates';
+import { renderReactTemplate } from '@/shared/lib/renderReactTemplate';
 
 
 // Функція перевірки підпису
@@ -100,11 +101,12 @@ export async function POST(req: NextRequest) {
 
 			const items = JSON.parse(order?.items as string) as CartItemDTO[]
 
-			await sendEmail(
-				order.email,
-				`Next Pizza | Ваше замовлення № ${order_id} сплачено 🎉🥰`,
-				OrderSuccessTemplate({ orderId: order_id, items })
-			)
+			await sendEmail({
+				sendTo: order.email,
+				subject: `Next Pizza | Ваше замовлення № ${order_id} сплачено 🎉🥰`,
+				html: await renderReactTemplate(OrderSuccessTemplate({ orderId: order_id, items }))
+			})
+
 		} else {
 			console.warn(`Платёж завершился с другим статусом: ${status}`);
 		}

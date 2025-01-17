@@ -7,6 +7,7 @@ import { CheckoutFormValuesType } from "@/shared/constants";
 import { sendEmail } from "@/shared/lib";
 import { createPayment } from "@/shared/lib/create-payment";
 import { getUserSession } from "@/shared/lib/get-user-session";
+import { renderReactTemplate } from "@/shared/lib/renderReactTemplate";
 import { generateOrderIdForLiqPay } from "@/shared/lib/utils";
 import { OrderStatus, Prisma } from "@prisma/client";
 import { hashSync } from "bcrypt";
@@ -106,11 +107,12 @@ export async function createOrder(data: CheckoutFormValuesType) {
 
 		if (paymentUrl) {
 			// Create email for payment
-			await sendEmail(
-				data.email,
-				`Next Pizza | Сплата замовлення № ${orderId}`,
-				PayOrderTemplate({ orderId, totalAmount, paymentUrl, items: userCart.items, deliveryPrice })
-			)
+			await sendEmail({
+				sendTo: data.email,
+				subject: `Next Pizza | Сплата замовлення № ${orderId}`,
+				html: await renderReactTemplate(PayOrderTemplate({ orderId, totalAmount, paymentUrl, items: userCart.items, deliveryPrice }))
+			})
+
 			return paymentUrl;
 		}
 	} catch (error) {
@@ -187,11 +189,11 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 			}
 		})// тут додатково можна додати час активності цього коду + додати в схему Prisma
 
-		await sendEmail(
-			createUser.email,
-			`Next Pizza | Підтвердження реєстрації`,
-			VerificationCodeTemplate({ code })
-		)
+		await sendEmail({
+			sendTo: createUser.email,
+			subject: `Next Pizza | Підтвердження реєстрації`,
+			html: await renderReactTemplate(VerificationCodeTemplate({ code }))
+		})
 
 
 	} catch (error) {
