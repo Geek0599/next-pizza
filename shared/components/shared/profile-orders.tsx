@@ -28,8 +28,6 @@ export const ProfileOrders: React.FC<Props> = ({ className }) => {
 				setLoading(true)
 
 				const orders = await Api.orders.getOrders()
-
-				console.log(orders);
 				
 
 				if(orders && orders.length){					

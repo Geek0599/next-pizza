@@ -1,7 +1,6 @@
 import { prisma } from "@/prisma/prisma-client";
-import { Container, Profile, ProfileForm, TabBar } from "@/shared/components";
+import { Profile } from "@/shared/components";
 import { getUserSession } from "@/shared/lib/get-user-session";
-import { cn } from "@/shared/lib/utils";
 import { redirect } from "next/navigation"
 
 export default async function ProfilePage() {

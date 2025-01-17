@@ -1,19 +1,16 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { User } from '@prisma/client';
 import { FormProvider, useForm } from 'react-hook-form';
 import { formRegisterSchema, TypeFormRegister } from './modals/auth-modal/form/schemas';
 import toast from 'react-hot-toast';
 import { signOut } from 'next-auth/react';
-import { Container } from './container';
 import { Title } from './title';
 import { FormInput } from './form';
 import { Button } from '../ui';
 import { updateUserInfo } from '@/app/api/actions';
-import { log } from 'node:console';
 import { WhiteBlock } from './white-block';
-import { Api } from '@/shared/services/api-client';
 
 interface Props {
 	user: User;
@@ -32,7 +29,7 @@ export const ProfileForm: React.FC<Props> = ({ user }) => {
 
 	const onSubmit = async (data: TypeFormRegister) => {
 		try{
-			const res = await updateUserInfo({
+			await updateUserInfo({
 				email: data.email,
 				fullName: data.fullName,
 				password: data.password,
