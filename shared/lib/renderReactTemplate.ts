@@ -2,7 +2,6 @@
 export const loadRenderReactTemplateModule = async () => {
 	if (typeof globalThis.ReactDOMServer === 'undefined') {
 		globalThis.ReactDOMServer = (await import('react-dom/server')).default;
-		console.log('Module Loaded');
 	}
 };
 
